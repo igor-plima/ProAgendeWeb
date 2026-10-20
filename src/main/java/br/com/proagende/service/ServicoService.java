@@ -69,7 +69,12 @@ public class ServicoService {
         }
         servico.setIdProfissional(idProfissional);
         servico.setNome(Validador.exigirTexto(nome, "Nome", 100));
-        servico.setDescricao(Validador.exigirTexto(descricao, "Descrição", 65535));
+        // BUG-05: a descrição é opcional (coluna TEXT aceita NULL e o formulário web não a exige).
+        String descricaoLimpa = descricao == null ? "" : descricao.trim();
+        if (descricaoLimpa.length() > 65535) {
+            throw new RegraNegocioException("O campo Descrição deve ter no máximo 65535 caracteres.");
+        }
+        servico.setDescricao(descricaoLimpa);
         servico.setPreco(Validador.exigirPositivo(preco, "Preço"));
         servico.setDuracaoMinutos(Validador.exigirPositivo(duracaoMinutos, "Duração (minutos)"));
     }
