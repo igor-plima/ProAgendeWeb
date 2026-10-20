@@ -15,6 +15,7 @@ Sem MySQL: em `application.properties`, use `proagende.memoria=true` (dados fica
 
 ## Testes
 NetBeans: botão direito no projeto > **Test** (ou `mvn test`). Não precisam de MySQL.
+CT-01 a CT-16 vêm da Etapa 7; CT-17 a CT-19 (`web/ApiRestTest`) testam a API com MockMvc.
 
 ## API REST
 | Método | Caminho | Descrição |
@@ -23,11 +24,13 @@ NetBeans: botão direito no projeto > **Test** (ou `mvn test`). Não precisam de
 | GET/PUT/DELETE | `/api/clientes/{id}` | Buscar / atualizar / excluir |
 | GET/POST | `/api/profissionais` | idem |
 | GET/PUT/DELETE | `/api/profissionais/{id}` | idem |
-| GET/POST | `/api/servicos` | idem |
+| GET/POST | `/api/servicos` (`?profissional=ID` filtra) | Listar / cadastrar |
 | GET/PUT/DELETE | `/api/servicos/{id}` | idem |
-| GET/POST | `/api/agendamentos` | Listar / agendar (`data` dd/MM/aaaa, `hora` HH:mm) |
-| PATCH | `/api/agendamentos/{id}/status` | Confirmar, cancelar ou reativar |
-| DELETE | `/api/agendamentos/{id}` | Excluir |
-| GET | `/api/agendamentos/clientes-por-servico/{idServico}` | Clientes sem repetição |
+| GET/POST | `/api/agendamentos` (`?servico=ID&cliente=ID` filtram) | Listar ordenado por data / agendar |
+| GET/DELETE | `/api/agendamentos/{id}` | Buscar / excluir |
+| PATCH | `/api/agendamentos/{id}/status` | Confirmar, cancelar ou reativar (`{"status":"confirmado"}`) |
+
+Exemplo de agendamento (hora local, sem fuso):
+`{"idServico":1,"idCliente":2,"dataHora":"2030-01-15T10:00","status":"pendente"}`
 
 Erros de regra de negócio voltam com HTTP 400 e corpo `{"mensagem": "..."}`.
