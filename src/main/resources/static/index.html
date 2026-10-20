@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Painel | ProAgende</title>
+<link rel="stylesheet" href="css/estilo.css">
+</head>
+<body data-pagina="inicio">
+<header class="topo">
+  <div class="container topo-conteudo">
+    <a class="logo" href="index.html">📅 Pro<span>Agende</span></a>
+    <button class="menu-btn" id="menuBtn" aria-label="Abrir menu">☰</button>
+    <nav id="menu"><a href="index.html" class=ativo aria-current=page>Início</a><a href="clientes.html">Clientes</a><a href="profissionais.html">Profissionais</a><a href="servicos.html">Serviços</a><a href="agendamentos.html">Agendamentos</a></nav>
+  </div>
+</header>
+<main class="container">
+<h1>Painel</h1>
+<div id="mensagem" class="mensagem" role="alert" hidden></div>
+
+<section class="indicadores">
+<div class="indicador"><span id="qtdClientes">0</span>Clientes</div>
+<div class="indicador"><span id="qtdProfissionais">0</span>Profissionais</div>
+<div class="indicador"><span id="qtdServicos">0</span>Serviços</div>
+<div class="indicador"><span id="qtdAgendamentos">0</span>Agendamentos ativos</div>
+</section>
+<section class="cartao"><h2>Próximos agendamentos</h2>
+<div class="rolagem"><table><thead><tr><th>Data/hora</th><th>Cliente</th><th>Serviço</th><th>Profissional</th><th>Status</th></tr></thead><tbody id="corpoTabela"></tbody></table></div>
+<p class="vazio" id="vazio" hidden>Nenhum agendamento futuro.</p></section>
+<section class="cartao"><h2>Dados de demonstração</h2>
+<p>Para testar as telas rapidamente, carregue dados de exemplo ou apague tudo.</p>
+<div class="botoes"><button class="btn primario" id="btnExemplo">Carregar dados de exemplo</button><button class="btn perigo" id="btnApagar">Apagar todos os dados</button></div></section>
+</main>
+<footer class="rodape">ProAgende · Projeto Integrador SENAC · Etapa 8 (front-end, dados salvos no navegador)</footer>
+<script src="js/validador.js"></script>
+<script src="js/armazenamento.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/paginas.js"></script>
+</body>
+</html>

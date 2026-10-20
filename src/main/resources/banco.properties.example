@@ -1,0 +1,5 @@
+# Copie este arquivo para banco.properties e ajuste os valores.
+# Alternativa: defina as variáveis de ambiente PROAGENDE_DB_URL, PROAGENDE_DB_USER e PROAGENDE_DB_PASSWORD.
+db.url=jdbc:mysql://localhost:3306/ProAgende
+db.user=root
+db.password=sua_senha

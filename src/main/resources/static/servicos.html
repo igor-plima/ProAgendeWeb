@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Serviços | ProAgende</title>
+<link rel="stylesheet" href="css/estilo.css">
+</head>
+<body data-pagina="servicos">
+<header class="topo">
+  <div class="container topo-conteudo">
+    <a class="logo" href="index.html">📅 Pro<span>Agende</span></a>
+    <button class="menu-btn" id="menuBtn" aria-label="Abrir menu">☰</button>
+    <nav id="menu"><a href="index.html">Início</a><a href="clientes.html">Clientes</a><a href="profissionais.html">Profissionais</a><a href="servicos.html" class=ativo aria-current=page>Serviços</a><a href="agendamentos.html">Agendamentos</a></nav>
+  </div>
+</header>
+<main class="container">
+<h1>Serviços</h1>
+<div id="mensagem" class="mensagem" role="alert" hidden></div>
+<section class="cartao"><h2 id="tituloForm">Novo serviço</h2>
+<form id="formulario" novalidate><input type="hidden" id="id">
+<div class="grade"><div class="campo"><label for="idProfissional">Profissional *</label><select id="idProfissional" name="idProfissional"></select><small class="erro" id="erro-idProfissional"></small></div><div class="campo"><label for="nome">Nome do serviço *</label><input type="text" id="nome" name="nome" placeholder="Ex.: Corte" ><small class="erro" id="erro-nome"></small></div><div class="campo"><label for="descricao">Descrição</label><input type="text" id="descricao" name="descricao" placeholder="Ex.: Corte simples" ><small class="erro" id="erro-descricao"></small></div><div class="campo"><label for="preco">Preço (R$) *</label><input type="text" id="preco" name="preco" placeholder="50,00" inputmode=decimal><small class="erro" id="erro-preco"></small></div><div class="campo"><label for="duracao">Duração (minutos) *</label><input type="number" id="duracao" name="duracao" placeholder="60" min=1><small class="erro" id="erro-duracao"></small></div></div>
+<div class="botoes"><button type="submit" class="btn primario">Salvar</button><button type="reset" class="btn" id="btnLimpar">Limpar</button></div>
+</form></section><section class="cartao"><h2>Serviços cadastrados</h2>
+<div class="rolagem"><table><thead><tr><th>ID</th><th>Serviço</th><th>Profissional</th><th>Preço</th><th>Duração</th><th>Ações</th></tr></thead><tbody id="corpoTabela"></tbody></table></div>
+<p class="vazio" id="vazio" hidden>Nenhum registro cadastrado.</p></section>
+</main>
+<footer class="rodape">ProAgende · Projeto Integrador SENAC · Etapa 8 (front-end, dados salvos no navegador)</footer>
+<script src="js/validador.js"></script>
+<script src="js/armazenamento.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/paginas.js"></script>
+</body>
+</html>

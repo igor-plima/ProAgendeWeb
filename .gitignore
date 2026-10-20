@@ -1,0 +1,9 @@
+target/
+*.class
+nbproject/private/
+nbactions.xml
+.idea/
+*.iml
+.vscode/
+# Credenciais locais do banco (use banco.properties.example como modelo)
+src/main/resources/banco.properties

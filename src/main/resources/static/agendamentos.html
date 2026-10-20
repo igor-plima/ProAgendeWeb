@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agendamentos | ProAgende</title>
+<link rel="stylesheet" href="css/estilo.css">
+</head>
+<body data-pagina="agendamentos">
+<header class="topo">
+  <div class="container topo-conteudo">
+    <a class="logo" href="index.html">📅 Pro<span>Agende</span></a>
+    <button class="menu-btn" id="menuBtn" aria-label="Abrir menu">☰</button>
+    <nav id="menu"><a href="index.html">Início</a><a href="clientes.html">Clientes</a><a href="profissionais.html">Profissionais</a><a href="servicos.html">Serviços</a><a href="agendamentos.html" class=ativo aria-current=page>Agendamentos</a></nav>
+  </div>
+</header>
+<main class="container">
+<h1>Agendamentos</h1>
+<div id="mensagem" class="mensagem" role="alert" hidden></div>
+<section class="cartao"><h2 id="tituloForm">Novo agendamento</h2>
+<form id="formulario" novalidate><input type="hidden" id="id">
+<div class="grade"><div class="campo"><label for="idServico">Serviço *</label><select id="idServico" name="idServico"></select><small class="erro" id="erro-idServico"></small></div><div class="campo"><label for="idCliente">Cliente *</label><select id="idCliente" name="idCliente"></select><small class="erro" id="erro-idCliente"></small></div><div class="campo"><label for="data">Data * (dd/MM/aaaa)</label><input type="text" id="data" name="data" placeholder="15/01/2030" maxlength=10 inputmode=numeric><small class="erro" id="erro-data"></small></div><div class="campo"><label for="hora">Hora * (HH:mm)</label><input type="text" id="hora" name="hora" placeholder="10:00" maxlength=5 inputmode=numeric><small class="erro" id="erro-hora"></small></div><div class="campo"><label for="status">Status</label><select id="status" name="status"></select><small class="erro" id="erro-status"></small></div></div>
+<div class="botoes"><button type="submit" class="btn primario">Salvar</button><button type="reset" class="btn" id="btnLimpar">Limpar</button></div>
+</form></section><section class="cartao"><h2>Lista de agendamentos</h2><div class="filtros"><div class="campo"><label for="filtroServico">Filtrar por serviço</label><select id="filtroServico"></select></div><div class="campo"><label for="filtroCliente">Filtrar por cliente</label><select id="filtroCliente"></select></div></div>
+<div class="rolagem"><table><thead><tr><th>ID</th><th>Data/hora</th><th>Cliente</th><th>Serviço</th><th>Profissional</th><th>Status</th><th>Ações</th></tr></thead><tbody id="corpoTabela"></tbody></table></div>
+<p class="vazio" id="vazio" hidden>Nenhum registro cadastrado.</p></section>
+</main>
+<footer class="rodape">ProAgende · Projeto Integrador SENAC · Etapa 8 (front-end, dados salvos no navegador)</footer>
+<script src="js/validador.js"></script>
+<script src="js/armazenamento.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/paginas.js"></script>
+</body>
+</html>
