@@ -1,36 +1,35 @@
 # ProAgendeWeb — Projeto Integrador SENAC
 
-Sistema web de agendamento de serviços (Profissional, Cliente, Serviço e Agendamento).
-Back-end Spring Boot (REST) com JDBC/MySQL, reaproveitando as camadas da Etapa 6;
-front-end da Etapa 8 servido pela própria aplicação; testes JUnit 5 da Etapa 7 integrados.
+O **ProAgendeWeb** é meu Projeto Integrador final, desenvolvido como parte da conclusão do curso Técnico em Análise e Desenvolvimento de Sistemas do Senac.
 
-## Como executar (NetBeans)
-1. Rode `banco/ProAgende_estrutura_e_dados.sql` no MySQL (se o banco já existir, apague-o antes).
-2. Copie `src/main/resources/banco.properties.example` para `banco.properties` e informe usuário e senha
-   (ou defina `PROAGENDE_DB_URL`, `PROAGENDE_DB_USER`, `PROAGENDE_DB_PASSWORD`).
-3. Abra a pasta no NetBeans (File > Open Project), faça **Clean and Build** e depois **Run**.
-4. Acesse http://localhost:8080
+A aplicação web auxilia no gerenciamento de agendamentos de serviços. Ela permite organizar os cadastros de profissionais, clientes e serviços, além de criar e acompanhar agendamentos. O projeto utiliza Spring Boot para o back-end e a API REST, JDBC para a integração com o MySQL e o front-end desenvolvido na Etapa 8. Os testes automatizados da Etapa 7 também foram integrados ao projeto.
 
-Sem MySQL: em `application.properties`, use `proagende.memoria=true` (dados ficam só na memória).
+## Tecnologias
 
-## Testes
-NetBeans: botão direito no projeto > **Test** (ou `mvn test`). Não precisam de MySQL.
-CT-01 a CT-16 vêm da Etapa 7; CT-17 a CT-19 (`web/ApiRestTest`) testam a API com MockMvc.
+- Java 17
+- Spring Boot 3.3.4
+- Maven
+- MySQL 8 e JDBC
+- JUnit 5 e MockMvc
+- HTML, CSS e JavaScript
 
-## API REST
-| Método | Caminho | Descrição |
-|---|---|---|
-| GET/POST | `/api/clientes` | Listar / cadastrar |
-| GET/PUT/DELETE | `/api/clientes/{id}` | Buscar / atualizar / excluir |
-| GET/POST | `/api/profissionais` | idem |
-| GET/PUT/DELETE | `/api/profissionais/{id}` | idem |
-| GET/POST | `/api/servicos` (`?profissional=ID` filtra) | Listar / cadastrar |
-| GET/PUT/DELETE | `/api/servicos/{id}` | idem |
-| GET/POST | `/api/agendamentos` (`?servico=ID&cliente=ID` filtram) | Listar ordenado por data / agendar |
-| GET/DELETE | `/api/agendamentos/{id}` | Buscar / excluir |
-| PATCH | `/api/agendamentos/{id}/status` | Confirmar, cancelar ou reativar (`{"status":"confirmado"}`) |
+## Como executar no NetBeans
 
-Exemplo de agendamento (hora local, sem fuso):
-`{"idServico":1,"idCliente":2,"dataHora":"2030-01-15T10:00","status":"pendente"}`
+1. Configure o banco de dados MySQL executando o script `banco/ProAgende_estrutura_e_dados.sql`. Se o banco já existir e você precisar recriá-lo, faça um backup antes, pois essa operação pode apagar os dados existentes.
+2. Configure a conexão com o MySQL escolhendo **uma** destas opções:
+   - **Arquivo de configuração:** copie `src/main/resources/banco.properties.example` para `banco.properties` e preencha nesse arquivo os dados de acesso ao banco, como usuário e senha.
+   - **Variáveis de ambiente:** em vez de criar o arquivo `banco.properties`, configure `PROAGENDE_DB_URL`, `PROAGENDE_DB_USER` e `PROAGENDE_DB_PASSWORD` com o endereço do banco, o usuário e a senha.
+3. Abra a pasta do projeto no NetBeans em **File > Open Project**.
+4. Execute **Clean and Build** e, em seguida, **Run**.
+5. Acesse [http://localhost:8080](http://localhost:8080).
 
-Erros de regra de negócio voltam com HTTP 400 e corpo `{"mensagem": "..."}`.
+### Executar sem MySQL
+
+Para usar o modo em memória, configure `proagende.memoria=true` em `application.properties`. Nesse modo, os dados ficam apenas na memória e não são persistidos no MySQL.
+
+## Testes automatizados
+
+Os testes podem ser executados pelo NetBeans, clicando com o botão direito no projeto e selecionando **Test**, ou pelo terminal, na pasta do projeto:
+
+```bash
+mvn test
