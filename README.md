@@ -1,4 +1,4 @@
-# ProAgendeWeb — Projeto Integrador SENAC (Etapa 9)
+# ProAgendeWeb — Projeto Integrador SENAC
 
 Sistema web de agendamento de serviços (Profissional, Cliente, Serviço e Agendamento).
 Back-end Spring Boot (REST) com JDBC/MySQL, reaproveitando as camadas da Etapa 6;
